@@ -1,9 +1,8 @@
-.buildlog
 .DS_Store
+.atom/
 .idea
+.packages
 .pub/
-.settings/
 build/
 packages
-.packages
 pubspec.lock

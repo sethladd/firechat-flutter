@@ -1,9 +1,8 @@
-# REPLACE_ME
+# firechat_flutter
 
-A library for Flutter developers. It is awesome.
+A minimal Flutter project.
 
-## Features and bugs
+## Getting Started
 
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: https://github.com/flutter/REPLACE_ME/issues
+For help getting started with Flutter, view our online
+[documentation](http://flutter.io/).
