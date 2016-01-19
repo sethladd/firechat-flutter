@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(
     new MaterialApp(
-      title: "Flutter Demo",
+      title: "Firechat",
       routes: <String, RouteBuilder>{
-        '/': (RouteArguments args) => new FlutterDemo()
+        '/': (RouteArguments args) => new FirechatApp()
       }
     )
   );
 }
 
-class FlutterDemo extends StatefulComponent {
+class FirechatApp extends StatefulComponent {
   @override
-  State createState() => new FlutterDemoState();
+  State createState() => new FirechatAppState();
 }
 
-class FlutterDemoState extends State {
+class FirechatAppState extends State {
   int counter = 0;
 
   void incrementCounter() {
@@ -28,7 +28,7 @@ class FlutterDemoState extends State {
   Widget build(BuildContext context) {
     return new Scaffold(
       toolBar: new ToolBar(
-        center: new Text("Flutter Demo")
+        center: new Text("Firechat")
       ),
       body: new Material(
         child: new Center(

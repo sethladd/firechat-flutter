@@ -1,5 +1,5 @@
 name: firechat_flutter
-description: A minimal Flutter project.
+description: A minimal chat app using Flutter and Firebase.
 dependencies:
   flutter:
-    path: ../git/flutter/packages/flutter
+    path: ../flutter/packages/flutter
