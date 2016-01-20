@@ -1,6 +1,9 @@
 # firechat_flutter
 
-Firechat is a simple, extensible chat widget powered by [Firebase](https://www.firebase.com/?utm_source=firechat).
+Firechat is a simple, extensible chat widget powered by
+[Firebase](https://www.firebase.com/?utm_source=firechat). This version
+is built with [Flutter](https://flutter.io).
+
 It is intended to serve as a concise, documented foundation for chat products built on Firebase.
 It works out of the box, and is easily extended.
 
