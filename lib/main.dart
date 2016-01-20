@@ -17,13 +17,24 @@ class FirechatApp extends StatefulComponent {
 }
 
 class FirechatAppState extends State {
-  int counter = 0;
+  List<String> _messages;
 
-  void incrementCounter() {
-    setState(() {
-      counter++;
-    });
+  void initState() {
+    _messages = <String>[];
+    super.initState();
   }
+
+  void _addMessage(String message) {
+    setState(() => _messages.insert(0, message));
+  }
+
+  Widget _buildMessage(String message) {
+    return new Center(
+      child: new Text(message)
+    );
+  }
+
+  GlobalKey _messageKey = new GlobalKey();
 
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -31,15 +42,25 @@ class FirechatAppState extends State {
         center: new Text("Firechat")
       ),
       body: new Material(
-        child: new Center(
-          child: new Text("Button tapped $counter times.")
+        child: new Column(
+          children: [
+            new Container(
+              margin: const EdgeDims.all(6.0),
+              child: new Input(
+                key: _messageKey,
+                placeholder: 'Enter message',
+                keyboardType: KeyboardType.TEXT,
+                onSubmitted: _addMessage
+              )
+            ),
+            new Flexible(
+              child: new ScrollableList(
+                itemExtent: 50.0,
+                children: _messages.map(_buildMessage)
+              )
+            ),
+          ]
         )
-      ),
-      floatingActionButton: new FloatingActionButton(
-        child: new Icon(
-          icon: 'content/add'
-        ),
-        onPressed: incrementCounter
       )
     );
   }
