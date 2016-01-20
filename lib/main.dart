@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase/firebase.dart';
+import 'dart:math' as math;
 
 void main() {
   runApp(
@@ -17,20 +19,32 @@ class FirechatApp extends StatefulComponent {
 }
 
 class FirechatAppState extends State {
-  List<String> _messages;
+  Firebase _firebase;
+  List<Map<String, String>> _messages;
+  String _user;
 
   void initState() {
-    _messages = <String>[];
+    _firebase = new Firebase("https://firechat-ios.firebaseio-demo.com/");
+    _user = "Guest${new math.Random().nextInt(1000)}";
+    _firebase.onChildAdded.listen((Event event) {
+      Map<String, String> message = event.snapshot.val();
+      _messages.insert(0, message);
+    });
+    _messages = <Map<String, String>>[];
     super.initState();
   }
 
-  void _addMessage(String message) {
-    setState(() => _messages.insert(0, message));
+  void _addMessage(String text) {
+    Map<String, String> message = {
+      'name': _user,
+      'text': text,
+    };
+    _firebase.push().set(message);
   }
 
-  Widget _buildMessage(String message) {
+  Widget _buildMessage(Map<String, String> message) {
     return new Center(
-      child: new Text(message)
+      child: new Text("${message['name']}: ${message['text']}")
     );
   }
 
@@ -39,7 +53,7 @@ class FirechatAppState extends State {
   Widget build(BuildContext context) {
     return new Scaffold(
       toolBar: new ToolBar(
-        center: new Text("Firechat")
+        center: new Text("Chatting as $_user")
       ),
       body: new Material(
         child: new Column(
